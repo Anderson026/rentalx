@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 // utilizando a rota de cadastro de categorias
-app.use(categoriesRoutes);
+app.use("/categories", categoriesRoutes);
 
 // definindo a rota de aplicação
 app.listen(3333, () => console.log("Server is running!"));
