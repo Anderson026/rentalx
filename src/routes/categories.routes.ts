@@ -1,29 +1,18 @@
 // importando o router do express
 import { Router } from "express";
-import { Category } from "./model/Category";
+import { CategoriesRepository } from "../repositories/CategoriesRepository";
 // criando uma constante de categoriesRoutes
 const categoriesRoutes = Router();
-
-// criando um array como banco de dados para testes da rota
-const categories: Category[] = [];
-
+// instanciando o objeto do repositório de categorias para poder inserir os dados no array
+const categoriesRepository = new CategoriesRepository();
 // criando a rota de post
 categoriesRoutes.post("/", (request, response) => {
   // recebendo as informações de request.body
   const { name, description } = request.body;
 
-  // criando um objeto de category
-  const category = new Category();
-  // atribuindo os dados em um novo objeto
-  Object.assign(category, {
-    name,
-    description,
-    created_at: new Date(),
-  });
+  categoriesRepository.create({ name, description })
 
-  categories.push(category);
-
-  return response.status(201).json({ category });
+  return response.status(201).send();
 });
 
 // exportando a rota de categories
