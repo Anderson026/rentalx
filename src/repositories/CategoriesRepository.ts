@@ -26,6 +26,10 @@ class CategoriesRepository {
 
     this.categories.push(category);
   }
+  // método para listar as categorias
+  list(): Category[] {
+    return this.categories;
+  }
 };
 // exportando a classe de repositío de categorias
 export { CategoriesRepository };
