@@ -9,6 +9,12 @@ const categoriesRepository = new CategoriesRepository();
 categoriesRoutes.post("/", (request, response) => {
   // recebendo as informações de request.body
   const { name, description } = request.body;
+  // importa o método para localizar o nome da categoria
+  const categoryAlreadyExists = categoriesRepository.findByName(name);
+  // verifica se a categoria existe
+  if(categoryAlreadyExists) {
+    return response.status(400).json({ error: "Category Already Exists!" });
+  };
 
   categoriesRepository.create({ name, description })
 

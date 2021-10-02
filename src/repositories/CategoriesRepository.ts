@@ -30,6 +30,12 @@ class CategoriesRepository {
   list(): Category[] {
     return this.categories;
   }
+  // método para localizar por nome
+  findByName(name:string): Category {
+    const category = this.categories.find(category => category.name === name);
+    return category;
+  }
+
 };
 // exportando a classe de repositío de categorias
 export { CategoriesRepository };
