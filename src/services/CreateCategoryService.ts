@@ -1,5 +1,5 @@
 // importando o repositório de categorias
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
+import { ICategoriesrepository } from "../repositories/ICategoriesRepository";
 
 // criando a interface para poder cadastrar o nome e a descrição
 interface IRequest {
@@ -9,7 +9,7 @@ interface IRequest {
 // criando a classe de criar as categorias e com a validação pelo nome
 class CreateCategoryService {
   // acessar o repository
-  constructor(private categoriesRepository: CategoriesRepository) {
+  constructor(private categoriesRepository: ICategoriesrepository) {
 
   }
 

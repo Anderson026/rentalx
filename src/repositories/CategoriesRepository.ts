@@ -1,12 +1,9 @@
 // importando a classe de categorias
 import { Category } from "../model/Category";
-// DTO - Data Transfer Object
-interface ICreateCategoryDTO {
-  name: string;
-  description: string;
-}
+import { ICategoriesrepository, ICreateCategoryDTO } from "./ICategoriesRepository";
+
 // criando um repositório de categorias para armazenar os dados do objeto de categoria no array
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesrepository {
   // criando um array como banco de dados para testes da rota
   private categories: Category[];
   // método construtor da classe
