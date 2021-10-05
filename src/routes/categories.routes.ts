@@ -1,7 +1,7 @@
 // importando o router do express
 import { Router } from "express";
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
-import { CreateCategoryService } from "../services/CreateCategoryService";
+import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
+import { CreateCategoryService } from "../modules/cars/services/CreateCategoryService";
 // criando uma constante de categoriesRoutes
 const categoriesRoutes = Router();
 // instanciando o objeto do repositório de categorias para poder inserir os dados no array
