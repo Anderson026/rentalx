@@ -1,5 +1,5 @@
 // importando o repositório de categorias
-import { ICategoriesrepository } from "../repositories/ICategoriesRepository";
+import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
 
 // criando a interface para poder cadastrar o nome e a descrição
 interface IRequest {
@@ -7,7 +7,7 @@ interface IRequest {
   description: string;
 }
 // criando a classe de criar as categorias e com a validação pelo nome
-class CreateCategoryService {
+class CreateCategoryUseCase {
   // acessar o repository
   constructor(private categoriesRepository: ICategoriesrepository) {
 
@@ -23,8 +23,8 @@ class CreateCategoryService {
       throw new Error("Category already exists!");
     };
 
-    this.categoriesRepository.create({ name, description })
+    this.categoriesRepository.create({ name, description });
   }
 }
 
-export { CreateCategoryService }
+export { CreateCategoryUseCase };
