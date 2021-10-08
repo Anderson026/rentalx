@@ -1,6 +1,6 @@
 // importando a classe de categorias
-import { Category } from "../model/Category";
-import { ICategoriesrepository, ICreateCategoryDTO } from "./ICategoriesRepository";
+import { Category } from "../../model/Category";
+import { ICategoriesrepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 // criando um repositório de categorias para armazenar os dados do objeto de categoria no array
 class CategoriesRepository implements ICategoriesrepository {
