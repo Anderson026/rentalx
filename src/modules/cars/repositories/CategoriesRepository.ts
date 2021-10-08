@@ -6,10 +6,23 @@ import { ICategoriesrepository, ICreateCategoryDTO } from "./ICategoriesReposito
 class CategoriesRepository implements ICategoriesrepository {
   // criando um array como banco de dados para testes da rota
   private categories: Category[];
+  // criando um private static Instance
+  private static INSTANCE: CategoriesRepository;
   // método construtor da classe
-  constructor() {
+  private constructor() {
     this.categories = [];
   } 
+  // Utilizando o padrão de projeto singleton
+  //  método para pegar a instance
+  public static getInstance(): CategoriesRepository {
+    // verfica se a instância existe
+    if (!CategoriesRepository.INSTANCE) {
+      // cria o valor
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+    }
+    // se tiver criada a instância, repassa a instância criada
+    return CategoriesRepository.INSTANCE;
+  }
   // método de cadastro de categoria
   create({ name, description }: ICreateCategoryDTO): void {
     // criando um objeto de category
