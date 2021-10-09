@@ -2,7 +2,9 @@
 import { Router } from "express";
 // importando o multer
 import multer from "multer";
+// importando as regras de negócio para as rotas
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
+import { importCategoryController } from "../modules/cars/useCases/importCategory";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories";
 // criando uma constante de categoriesRoutes
 const categoriesRoutes = Router();
@@ -20,11 +22,7 @@ categoriesRoutes.get("/", (request, response) => {
 });
 // rota para enviar as imagens dos veículos
 categoriesRoutes.post("/import", upload.single("file") , (request, response) => {
-  // pegando o arquivo file dentro do request
-  const { file } = request;
-  console.log(file);
-  // retornnando o envio do arquivo
-  return response.send();
+  return importCategoryController.handle(request, response);
 });
 // exportando a rota de categories
 export { categoriesRoutes };
