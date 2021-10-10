@@ -47,7 +47,19 @@ class ImportCategoryUseCase {
   async execute(file: Express.Multer.File): Promise<void> {
     // faz a chamado de método loadCategories, passando o arquivo importado
     const categories = await this.loadCategories(file);
-    console.log(categories);
+    // percorre pelo banco de dados fake (array)
+    categories.map(async (category) => {
+      const { name, description } = category;
+      // verifica se a categoria existe
+      const existCategory = this.categoriesRepository.findByName(name);
+      // se não existir, cria a categoria
+      if (!existCategory) {
+        this.categoriesRepository.create({
+          name,
+          description,
+        });
+      }
+    });
     
   }
 }
