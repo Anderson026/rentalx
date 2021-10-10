@@ -1,12 +1,16 @@
 // importando o express
 import  express  from "express";
 import { router } from "./routes";
-
+import swaggerUi from "swagger-ui-express";
+// importando o arquivo de configuração do swagger
+import swaggerFile from "./swagger.json";
 // armazenando o express dentro de uma variável
 const app = express();
 
 // configurando o express para receber dados no formato json
 app.use(express.json());
+// configurando o swagger para criar a documentação
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // importando as rotas
 app.use(router);
 
