@@ -7,11 +7,11 @@ class CreateCategoryController {
 
   }
 
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     // recebendo as informações de request.body
     const { name, description } = request.body;
     // executando o método para criar a categoria
-    this.createCategoryUseCase.execute({ name, description });
+    await this.createCategoryUseCase.execute({ name, description });
 
     return response.status(201).send();
   }

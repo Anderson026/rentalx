@@ -13,10 +13,10 @@ class CreateCategoryUseCase {
 
   }
 
-  execute({ name, description }: IRequest): void {
+  async execute({ name, description }: IRequest): Promise<void> {
   
     // importa o método para localizar o nome da categoria
-    const categoryAlreadyExists = this.categoriesRepository.findByName(name);
+    const categoryAlreadyExists = await this.categoriesRepository.findByName(name);
     // verifica se a categoria existe
     if (categoryAlreadyExists) {
       // alterando o tipo de erro para padronizar o retorno

@@ -3,7 +3,7 @@ import { Router } from "express";
 // importando o multer
 import multer from "multer";
 // importando as regras de negócio para as rotas
-import { createCategoryController } from "../modules/cars/useCases/createCategory";
+import createCategoryController from "../modules/cars/useCases/createCategory";
 import { importCategoryController } from "../modules/cars/useCases/importCategory";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories";
 // criando uma constante de categoriesRoutes
@@ -14,7 +14,7 @@ const upload = multer({
 });
 // criando a rota de post
 categoriesRoutes.post("/", (request, response) => {
-  return createCategoryController.handle(request, response);
+  return createCategoryController().handle(request, response);
 });
 // rota com a lista de categorias
 categoriesRoutes.get("/", (request, response) => {

@@ -1,48 +1,38 @@
 // importando a classe de categorias
-import { Category } from "../../model/Category";
+import { getRepository, Repository } from "typeorm";
+import { Category } from "../../entities/Category";
 import { ICategoriesrepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 // criando um repositório de categorias para armazenar os dados do objeto de categoria no array
 class CategoriesRepository implements ICategoriesrepository {
-  // criando um array como banco de dados para testes da rota
-  private categories: Category[];
-  // criando um private static Instance
-  private static INSTANCE: CategoriesRepository;
+  
+  private repository: Repository<Category>;
+ 
   // método construtor da classe
-  private constructor() {
-    this.categories = [];
+  constructor() {
+    this.repository = getRepository(Category);
   } 
-  // Utilizando o padrão de projeto singleton
-  //  método para pegar a instance
-  public static getInstance(): CategoriesRepository {
-    // verfica se a instância existe
-    if (!CategoriesRepository.INSTANCE) {
-      // cria o valor
-      CategoriesRepository.INSTANCE = new CategoriesRepository();
-    }
-    // se tiver criada a instância, repassa a instância criada
-    return CategoriesRepository.INSTANCE;
-  }
-  // método de cadastro de categoria
-  create({ name, description }: ICreateCategoryDTO): void {
-    // criando um objeto de category
-  const category = new Category();
-    // atribuindo os dados em um novo objeto
-    Object.assign(category, {
-      name,
-      description,
-      created_at: new Date(),
-    });
 
-    this.categories.push(category);
+  // método de cadastro de categoria
+  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+   
+    // cria os dados de nome e descrição no banco de dados
+    const category = this.repository.create({
+      description,
+      name,
+    })
+      // salva no banco de dados
+      await this.repository.save(category);
   }
   // método para listar as categorias
-  list(): Category[] {
-    return this.categories;
+  async list(): Promise<Category[]> {
+    const categories = await this.repository.find();
+    return categories;
   }
   // método para localizar por nome
-  findByName(name:string): Category {
-    const category = this.categories.find(category => category.name === name);
+  async findByName(name:string): Promise<Category> {
+    // busca no banco de dados pelo nome
+    const category = await this.repository.findOne({name});
     return category;
   }
 
