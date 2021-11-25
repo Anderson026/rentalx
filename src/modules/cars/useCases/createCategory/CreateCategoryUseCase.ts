@@ -1,5 +1,7 @@
 // importando o repositório de categorias
 import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
+// importando as injeções de dependência
+import { inject, injectable } from  "tsyringe";
 
 // criando a interface para poder cadastrar o nome e a descrição
 interface IRequest {
@@ -7,9 +9,13 @@ interface IRequest {
   description: string;
 }
 // criando a classe de criar as categorias e com a validação pelo nome
+@injectable()
 class CreateCategoryUseCase {
   // acessar o repository
-  constructor(private categoriesRepository: ICategoriesrepository) {
+  constructor(
+    // faz uma verificação no container e verifica qual a classe que ele está referenciando
+    @inject("Categoriesrepository")
+    private categoriesRepository: ICategoriesrepository) {
 
   }
 

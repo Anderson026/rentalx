@@ -4,6 +4,8 @@ import { router } from "./routes";
 import swaggerUi from "swagger-ui-express";
 // importando o arquivo de configuração do swagger
 import swaggerFile from "./swagger.json";
+// importando o container
+import "./shared/container";
 // importando o banco de dados
 import "./database";
 // armazenando o express dentro de uma variável
