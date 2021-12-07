@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
-import { container } from "tsyringe";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
+import { container } from "tsyringe";
 
 class CreateCategoryController {
   // instanciando o serviço de cadastro de categorias

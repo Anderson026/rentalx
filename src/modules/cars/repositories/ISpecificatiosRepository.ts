@@ -8,9 +8,9 @@ interface ICreateSpecificationDTO {
 // interface de repositório de especificação de repositório
 interface ISpecificationsRepository {
   
-  create({name, description}: ICreateSpecificationDTO): void;
+  create({name, description}: ICreateSpecificationDTO): Promise<void>;
   // validando se o nome já existe no banco de dados
-  findByName(name: string): Specification;
+  findByName(name: string): Promise<Specification>;
 }
 // exportando as interfaces
 export { ISpecificationsRepository, ICreateSpecificationDTO };

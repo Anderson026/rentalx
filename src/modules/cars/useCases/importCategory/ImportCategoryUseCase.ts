@@ -3,15 +3,19 @@ import fs from "fs";
 // importando o csv parse
 import csvParse from "csv-parse";
 import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
+import { inject, injectable } from "tsyringe";
 // interface para utilizar o nome e a descrição do conteúdo do arquivo csv importado
 interface IImportCategory {
   name: string;
   description: string;
 }
-
+@injectable()
 class ImportCategoryUseCase {
 
-  constructor(private categoriesRepository: ICategoriesrepository) {
+  constructor(
+    // injetando a dependência do caso de uso de import category
+    @inject("Categoriesrepository")
+    private categoriesRepository: ICategoriesrepository) {
 
   }
   // método que faz a leitura dos arquivos enviados
@@ -53,10 +57,10 @@ class ImportCategoryUseCase {
     categories.map(async (category) => {
       const { name, description } = category;
       // verifica se a categoria existe
-      const existCategory = this.categoriesRepository.findByName(name);
+      const existCategory = await this.categoriesRepository.findByName(name);
       // se não existir, cria a categoria
       if (!existCategory) {
-        this.categoriesRepository.create({
+        await this.categoriesRepository.create({
           name,
           description,
         });

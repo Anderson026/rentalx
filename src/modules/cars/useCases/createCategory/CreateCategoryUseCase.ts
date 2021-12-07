@@ -1,5 +1,6 @@
 // importando o repositório de categorias
 import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
+import "reflect-metadata";
 // importando as injeções de dependência
 import { inject, injectable } from  "tsyringe";
 
