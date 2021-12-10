@@ -14,7 +14,7 @@ class ImportCategoryController {
     // instanciando o caso de uso para importar o arquivo
     await importCategoryUseCase.execute(file);
     // retornnando o envio do arquivo
-    return response.send();
+    return response.status(201).send();
   }
 }
 // exportando a classe
