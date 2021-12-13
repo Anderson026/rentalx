@@ -1,5 +1,7 @@
 // importando o container de tsyringe
 import { container } from "tsyringe";
+import { UsersRepository } from "../../modules/accounts/repositories/implementations/UsersRepository";
+import { IUsersRepository } from "../../modules/accounts/repositories/IUsersRepository";
 import { ICategoriesrepository } from "../../modules/cars/repositories/ICategoriesRepository";
 import { CategoriesRepository } from "../../modules/cars/repositories/implementations/CategoriesRepository";
 import { SpecificationsRepository } from "../../modules/cars/repositories/implementations/SpecificationsRepository";
@@ -16,4 +18,10 @@ container.registerSingleton<ICategoriesrepository>(
 container.registerSingleton<ISpecificationsRepository>(
   "SpecificationsRepository",
   SpecificationsRepository
+)
+
+// registrando o ingetor de dependências da classe de usuário
+container.registerSingleton<IUsersRepository>(
+  "UsersRepository",
+  UsersRepository
 )
