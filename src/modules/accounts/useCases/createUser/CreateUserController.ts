@@ -12,7 +12,6 @@ class CreateUserCrontroller {
 
     await createUserUseCase.execute({
       name,
-      username,
       email,
       password,
       driver_license,
