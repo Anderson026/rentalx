@@ -24,6 +24,11 @@ class UsersRepository implements IUsersRepository {
 
     await this.repository.save(user);
   }
+  // método para verificar se email existe
+  async findByEmail(email: string): Promise<User> {
+      const user = await this.repository.findOne({email});
+      return user;
+  }
 
 }
 
