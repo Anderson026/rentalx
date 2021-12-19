@@ -1,5 +1,6 @@
 // importando o router do express
 import { Router } from "express";
+import { authenticateRoutes } from "./authenticate.routes";
 import { categoriesRoutes } from "./categories.routes";
 import { specificationsRoutes } from "./specifications.roustes";
 import { usersRoutes } from "./users.routes";
@@ -12,5 +13,7 @@ router.use("/categories", categoriesRoutes);
 router.use("/specifications", specificationsRoutes);
 // utilizando a rota de cadsatro de usuários
 router.use("/users", usersRoutes);
+// utilizando a rota de sessão
+router.use(authenticateRoutes);
 // exportando as rotas
 export { router };

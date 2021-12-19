@@ -1,5 +1,5 @@
+import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
-import { hash } from "bcrypt";
 import { ICratedUserDTO } from "../../dtos/ICreatedUserDTO";
 import { UsersRepository } from "../../repositories/implementations/UsersRepository";
 

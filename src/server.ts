@@ -1,3 +1,4 @@
+import "reflect-metadata";
 // importando o express
 import  express  from "express";
 import { router } from "./routes";
