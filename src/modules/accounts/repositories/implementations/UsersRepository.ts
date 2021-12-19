@@ -30,6 +30,13 @@ class UsersRepository implements IUsersRepository {
       return user;
   }
 
+  // método para verificar se o id existe no banco de dados
+  async findById(id: string): Promise<User> {
+    const user = await this.repository.findOne(id);
+
+    return user;
+  }
+
 }
 
 export { UsersRepository };
