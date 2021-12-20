@@ -1,8 +1,9 @@
 // importando o repositório de categorias
-import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
 import "reflect-metadata";
 // importando as injeções de dependência
 import { inject, injectable } from  "tsyringe";
+import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
+import { AppError } from "../../../../errors/AppError";
 
 // criando a interface para poder cadastrar o nome e a descrição
 interface IRequest {
@@ -27,7 +28,7 @@ class CreateCategoryUseCase {
     // verifica se a categoria existe
     if (categoryAlreadyExists) {
       // alterando o tipo de erro para padronizar o retorno
-      throw new Error("Category already exists!");
+      throw new AppError("Category already exists!");
     };
 
     this.categoriesRepository.create({ name, description });

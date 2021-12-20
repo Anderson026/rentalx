@@ -1,6 +1,8 @@
 import "reflect-metadata";
 // importando o express
-import  express  from "express";
+import  express, { NextFunction, Request, Response }  from "express";
+import "express-async-errors";
+import { AppError } from "./errors/AppError";
 import { router } from "./routes";
 import swaggerUi from "swagger-ui-express";
 // importando o arquivo de configuração do swagger
@@ -18,6 +20,19 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // importando as rotas
 app.use(router);
+// criando um middleware para tratar os erros
+app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
+  if (err instanceof AppError) {
+    return response.status(err.statusCode).json({
+      message: err.message
+    });
+  }
+
+  return response.status(500).json({
+    status: "error",
+    message: `Internal server error - ${err.message}`
+  })
+});
 
 // definindo a rota de aplicação
 app.listen(3333, () => console.log("Server is running!"));
