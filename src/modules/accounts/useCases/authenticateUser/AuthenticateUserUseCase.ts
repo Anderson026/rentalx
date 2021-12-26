@@ -43,7 +43,7 @@ class AuthenticateUserUseCase {
     // Gerar jsonwebtoken
     const token = sign({}, "e10adc3949ba59abbe56e057f20f883e", {
       subject: user.id,
-      expiresIn: "1d",
+      expiresIn: "60d",
     });
 
     const tokenReturn: IResponse = {

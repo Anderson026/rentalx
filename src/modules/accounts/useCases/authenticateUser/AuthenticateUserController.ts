@@ -16,4 +16,3 @@ class AuthenticateUserController {
 }
 
 export { AuthenticateUserController };
-// parei aos 16:34 minutos do vídeo criando token do usuário

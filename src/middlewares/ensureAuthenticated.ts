@@ -20,7 +20,7 @@ export async function ensureAuthenticated(request: Request, response: Response, 
   const [, token] = authHeader.split(" ");
   // verifica se o token é válido
   try {
-    const { sub: user_id } = verify(token, "e10adc3949ba59abbe56e057f20f883e") as IPayload;
+    const { sub: user_id } = verify(token, "25d55ad283aa400af464c76d713c07ad") as IPayload;
     
     // verifica se o usuário existe no banco de dados
     const usersRepository = new UsersRepository();
@@ -30,6 +30,10 @@ export async function ensureAuthenticated(request: Request, response: Response, 
     if (!user) {
       throw new AppError("User does not exists!", 401);
     }
+    // colocando o usuário na requisição
+    request.user = {
+      id: user_id,
+    };
 
     next();
   } catch{
