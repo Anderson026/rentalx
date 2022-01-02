@@ -3,7 +3,7 @@
 import { Category } from "../../entities/Category";
 import { ICategoriesrepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
-
+// salvando a categoria em memória para poder testar a funcionalidade
 class CategoriesRepositoryInMemory implements ICategoriesrepository {
 
   categories: Category[] = [];

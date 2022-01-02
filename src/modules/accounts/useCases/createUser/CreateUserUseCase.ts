@@ -2,7 +2,8 @@ import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../errors/AppError";
 import { ICratedUserDTO } from "../../dtos/ICreatedUserDTO";
-import { UsersRepository } from "../../repositories/implementations/UsersRepository";
+// import { UsersRepository } from "../../repositories/implementations/UsersRepository";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 // criando o caso de uso do usuário
 @injectable()
@@ -10,7 +11,7 @@ class CreateUserUseCase {
 
   constructor(
     @inject("UsersRepository")
-    private usersRepository: UsersRepository
+    private usersRepository: IUsersRepository
   ) {}
 
   async execute({name, email, password, driver_license}: ICratedUserDTO): Promise<void> {
