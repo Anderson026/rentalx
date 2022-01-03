@@ -2,8 +2,9 @@
 import "reflect-metadata";
 // importando as injeções de dependência
 import { inject, injectable } from  "tsyringe";
-import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
-import { AppError } from "../../../../errors/AppError";
+
+import { ICategoriesrepository } from "@modules/cars/repositories/ICategoriesRepository";
+import { AppError } from "@errors/AppError";
 
 // criando a interface para poder cadastrar o nome e a descrição
 interface IRequest {

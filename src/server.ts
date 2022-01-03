@@ -2,15 +2,16 @@ import "reflect-metadata";
 // importando o express
 import  express, { NextFunction, Request, Response }  from "express";
 import "express-async-errors";
-import { AppError } from "./errors/AppError";
-import { router } from "./routes";
 import swaggerUi from "swagger-ui-express";
+// importando o banco de dados
+import "./database";
+
+import { AppError } from "@errors/AppError";
+import { router } from "./routes";
 // importando o arquivo de configuração do swagger
 import swaggerFile from "./swagger.json";
 // importando o container
-import "./shared/container";
-// importando o banco de dados
-import "./database";
+import "@shared/container";
 // armazenando o express dentro de uma variável
 const app = express();
 

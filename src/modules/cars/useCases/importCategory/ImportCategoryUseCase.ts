@@ -1,9 +1,10 @@
-// importando o file system
-import fs from "fs";
 // importando o csv parse
 import csvParse from "csv-parse";
-import { ICategoriesrepository } from "../../repositories/ICategoriesRepository";
+// importando o file system
+import fs from "fs";
+
 import { inject, injectable } from "tsyringe";
+import { ICategoriesrepository } from "@modules/cars/repositories/ICategoriesRepository";
 // interface para utilizar o nome e a descrição do conteúdo do arquivo csv importado
 interface IImportCategory {
   name: string;
