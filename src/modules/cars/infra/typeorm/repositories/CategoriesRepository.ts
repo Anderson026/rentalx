@@ -1,7 +1,8 @@
 // importando a classe de categorias
 import { getRepository, Repository } from "typeorm";
-import { Category } from "../../entities/Category";
-import { ICategoriesrepository, ICreateCategoryDTO } from "../ICategoriesRepository";
+import { ICategoriesrepository, ICreateCategoryDTO } from "@modules/cars/repositories/ICategoriesRepository";
+import { Category } from "../entities/Category";
+
 
 // criando um repositório de categorias para armazenar os dados do objeto de categoria no array
 class CategoriesRepository implements ICategoriesrepository {

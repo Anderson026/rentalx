@@ -1,7 +1,8 @@
 // importando o router do express
+import { CreateSpecificationController } from "@modules/cars/useCases/createSpecification/CreateSpecificationController";
 import { Router } from "express";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import { CreateSpecificationController } from "../modules/cars/useCases/createSpecification/CreateSpecificationController";
+
 // armazenando o router em uma variável
 const specificationsRoutes = Router();
 // instanciando o controller de specifications

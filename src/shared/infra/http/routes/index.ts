@@ -1,9 +1,10 @@
 // importando o router do express
 import { Router } from "express";
-import { usersRoutes } from "./users.routes";
 import { authenticateRoutes } from "./authenticate.routes";
-import { specificationsRoutes } from "./specifications.roustes";
 import { categoriesRoutes } from "./categories.routes";
+import { specificationsRoutes } from "./specifications.roustes";
+import { usersRoutes } from "./users.routes";
+
 // instanciando o router dentro de uma variável
 const router = Router();
 

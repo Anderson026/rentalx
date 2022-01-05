@@ -3,9 +3,10 @@ import { Router } from "express";
 // importando o multer
 import multer from "multer";
 // importando as regras de negócio para as rotas
-import { CreateCategoryController } from "../modules/cars/useCases/createCategory/CreateCategoryController";
-import { ImportCategoryController } from "../modules/cars/useCases/importCategory/ImportCategoryController";
-import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
+import { CreateCategoryController } from "@modules/cars/useCases/createCategory/CreateCategoryController";
+import { ImportCategoryController } from "@modules/cars/useCases/importCategory/ImportCategoryController";
+import { ListCategoriesController } from "@modules/cars/useCases/listCategories/ListCategoriesController";
+
 // criando uma constante de categoriesRoutes
 const categoriesRoutes = Router();
 // instanciando o multer e configurando a pasta de destino das imagens
