@@ -1,6 +1,7 @@
 
 
-import { Category } from "../../entities/Category";
+
+import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 import { ICategoriesrepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 // salvando a categoria em memória para poder testar a funcionalidade
