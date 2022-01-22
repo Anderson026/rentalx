@@ -4,7 +4,7 @@ import  express, { NextFunction, Request, Response }  from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 // importando o banco de dados
-import "@shared/infra/typeorm";
+import createConnection from  "@shared/infra/typeorm";
 
 import { AppError } from "@shared/errors/AppError";
 import { router } from "./routes";
@@ -12,6 +12,9 @@ import { router } from "./routes";
 import swaggerFile from "../../../swagger.json";
 // importando o container
 import "@shared/container";
+// faz a chamada do banco de dados
+createConnection();
+
 // armazenando o express dentro de uma variável
 const app = express();
 
