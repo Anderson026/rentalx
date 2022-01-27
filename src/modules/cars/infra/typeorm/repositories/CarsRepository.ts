@@ -1,6 +1,6 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
-import { AlreadyHasActiveConnectionError, getRepository, Repository } from "typeorm";
+import { getRepository, Repository } from "typeorm";
 import { Car } from "../entities/Car";
 
 
@@ -40,6 +40,29 @@ class CarsRepository implements ICarsRepository {
 
     return car;
   }
+
+  async findAvailable(category_id?: string, brand?: string, name?: string): Promise<Car[]> {
+    const carsQuery = await this.repository
+    .createQueryBuilder("c")
+    .where("available = :available", { available: true });
+
+    if(brand) {
+      carsQuery.andWhere("brand = :brand", { brand });
+    };
+
+    if(name) {
+      carsQuery.andWhere("name = :name", { name });
+    };
+
+    if(category_id) {
+      carsQuery.andWhere("category_id = :category_id", { category_id });
+    };
+
+    const cars = await carsQuery.getMany();
+
+    return cars;
+  }
 }
 
 export { CarsRepository };
+// parei aso 8 minutos do da continuação da listagem de cars
