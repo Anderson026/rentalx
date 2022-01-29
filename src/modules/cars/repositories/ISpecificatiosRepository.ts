@@ -1,4 +1,5 @@
-import { Specification } from "../entities/Specifications";
+import { Specification } from "../infra/typeorm/entities/Specifications";
+
 
 // interface de craçao de especificação de carros
 interface ICreateSpecificationDTO {
@@ -8,9 +9,10 @@ interface ICreateSpecificationDTO {
 // interface de repositório de especificação de repositório
 interface ISpecificationsRepository {
   
-  create({name, description}: ICreateSpecificationDTO): Promise<void>;
+  create({name, description}: ICreateSpecificationDTO): Promise<Specification>;
   // validando se o nome já existe no banco de dados
   findByName(name: string): Promise<Specification>;
+  findByIds(ids: string[]): Promise<Specification[]>;
 }
 // exportando as interfaces
 export { ISpecificationsRepository, ICreateSpecificationDTO };
