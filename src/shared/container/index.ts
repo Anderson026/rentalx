@@ -1,6 +1,8 @@
 // importando o container de tsyringe
 import { container } from "tsyringe";
 
+import "@shared/container/providers";
+
 import { ICategoriesrepository } from "@modules/cars/repositories/ICategoriesRepository";
 import { CategoriesRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRepository";
 
@@ -16,33 +18,42 @@ import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsRep
 import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImagesRepository";
 import { CarsImagesRepository } from "@modules/cars/infra/typeorm/repositories/CarsImagesRepository";
 
+import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
+import { RentalsRepository } from "@modules/rentals/infra/typeorm/respositories/RentalsRepository";
+
 
 // registtrando o singleton para poder usar como ingetor da dependências das classe e suas interfaces
 container.registerSingleton<ICategoriesrepository>(
   // definindo o nome para o singleton
   "Categoriesrepository",
   CategoriesRepository
-)
+);
 // registrando o ingetor de dependências das classes de specifications
 container.registerSingleton<ISpecificationsRepository>(
   "SpecificationsRepository",
   SpecificationsRepository
-)
+);
 
 // registrando o ingetor de dependências da classe de usuário
 container.registerSingleton<IUsersRepository>(
   "UsersRepository",
   UsersRepository
-)
+);
 
 // registrando o ingetor de dependências da classe de carros
 container.registerSingleton<ICarsRepository>(
   "CarsRepository",
   CarsRepository
-)
+);
 
 // registrando o ingetor de dependências da classe de images
 container.registerSingleton<ICarsImagesRepository>(
   "CarsImagesRepository",
   CarsImagesRepository
-)
+);
+
+// registrando o ingetor de dependência da classe de alugueis
+container.registerSingleton<IRentalsRepository>(
+  "RentalsRepository",
+  RentalsRepository
+);
