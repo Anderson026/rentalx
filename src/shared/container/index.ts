@@ -20,6 +20,8 @@ import { CarsImagesRepository } from "@modules/cars/infra/typeorm/repositories/C
 
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { RentalsRepository } from "@modules/rentals/infra/typeorm/respositories/RentalsRepository";
+import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
+import { UsersTokensRepository } from "@modules/accounts/infra/typeorm/repositories/UsersTokensRepository";
 
 
 // registtrando o singleton para poder usar como ingetor da dependências das classe e suas interfaces
@@ -56,4 +58,10 @@ container.registerSingleton<ICarsImagesRepository>(
 container.registerSingleton<IRentalsRepository>(
   "RentalsRepository",
   RentalsRepository
+);
+
+// registrando o ingetor de dependência da classe de usersTokens
+container.registerSingleton<IUsersTokensRepository>(
+  "UsersTokensRepository",
+  UsersTokensRepository
 );
