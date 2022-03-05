@@ -3,6 +3,7 @@ import { Router } from "express";
 import { authenticateRoutes } from "./authenticate.routes";
 import { carsRoutes } from "./cars.routes";
 import { categoriesRoutes } from "./categories.routes";
+import { passwordRoutes } from "./password.routes";
 import { rentalRoutes } from "./rental.routes";
 import { specificationsRoutes } from "./specifications.roustes";
 import { usersRoutes } from "./users.routes";
@@ -19,6 +20,8 @@ router.use("/users", usersRoutes);
 router.use("/cars", carsRoutes);
 // rota para envio de dados de cadastro de alugueis
 router.use("/rentals", rentalRoutes);
+// rota para envio de refresh token
+router.use("/password", passwordRoutes);
 // utilizando a rota de sessão
 router.use(authenticateRoutes);
 // utilizando a rota de cadastro de especificações de veículos
