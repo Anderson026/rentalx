@@ -9,6 +9,7 @@ class UserTokens {
 
   @Column()
   refresh_token: string;
+  
   @Column()
   user_id: string;
 
