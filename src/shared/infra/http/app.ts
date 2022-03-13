@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import "dotenv/config";
+import upload from "@config/upload";
 // importando o express
 import  express, { NextFunction, Request, Response }  from "express";
 import "express-async-errors";
@@ -13,6 +14,7 @@ import { router } from "./routes";
 import swaggerFile from "../../../swagger.json";
 // importando o container
 import "@shared/container";
+
 // faz a chamada do banco de dados
 createConnection();
 
@@ -23,6 +25,9 @@ const app = express();
 app.use(express.json());
 // configurando o swagger para criar a documentação
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+// fazendo a leitura dos arquivos estáticos
+app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`));
+app.use("/cars", express.static(`${upload.tmpFolder}/cars`));
 // importando as rotas
 app.use(router);
 // criando um middleware para tratar os erros
