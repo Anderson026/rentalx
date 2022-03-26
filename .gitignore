@@ -2,3 +2,7 @@ node_modules
 .editorconfig
 .env
 coverage
+tmp/*
+!tmp/.gitkeep
+dist
+ormconfig.json
