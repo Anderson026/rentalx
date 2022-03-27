@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: yarn build
         
-      - uses: appleboy/spc-action@master
+      - uses: appleboy/spc-action@main
         with:
           host: ${{ secrets.SSH_HOST }}  
           username: ${{ secrets.SSH_USER }} 
