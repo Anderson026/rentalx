@@ -15,12 +15,15 @@ import swaggerFile from "../../../swagger.json";
 // importando o container
 import "@shared/container";
 import cors from "cors";
+import rateLimiter from "@shared/infra/http/middlewares/rateLimiter";
 
 // faz a chamada do banco de dados
 createConnection();
 
 // armazenando o express dentro de uma variável
 const app = express();
+
+app.use(rateLimiter);
 
 // configurando o express para receber dados no formato json
 app.use(express.json());
