@@ -14,6 +14,7 @@ import { router } from "./routes";
 import swaggerFile from "../../../swagger.json";
 // importando o container
 import "@shared/container";
+import cors from "cors";
 
 // faz a chamada do banco de dados
 createConnection();
@@ -28,6 +29,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // fazendo a leitura dos arquivos estáticos
 app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`));
 app.use("/cars", express.static(`${upload.tmpFolder}/cars`));
+
+app.use(cors({}));
 // importando as rotas
 app.use(router);
 // criando um middleware para tratar os erros
